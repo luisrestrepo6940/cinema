@@ -2,13 +2,14 @@ package com.company;
 
 public interface Entregable {
 
-        public void entregar();
 
-        public void devolver();
+        public void entregar(); //Método entregar.
 
-        public boolean isEntregado();
+        public void devolver(); //Método devolver.
 
-        public int compareTo(Object a);
+        public boolean isEntregado(); //Método para devolver el estado del atributoi prestado.
+
+        public int compareTo(Object a); //Método comparar (número de temporadas de serie) / (horas estimadas videojuego)
 
 }
 

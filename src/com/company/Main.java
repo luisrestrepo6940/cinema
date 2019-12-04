@@ -4,50 +4,68 @@ public class Main {
 
     public static void main(String[] args) {
 
+        //Declarar y crear array de Series con 5 posiciones.
         Serie listaSeries[] = new Serie[5];
 
+        //Declarar y crear array de videojuegos con 5 posiciones. 
         Videojuego listaVideoJuegos[] = new Videojuego[5];
 
+        //Inicializar cada posición del array de series.
         listaSeries[0] = new Serie();
         listaSeries[1] = new Serie("The Twilight Zone", "Rod Serling");
-        listaSeries[2] = new Serie("Sherlock", 13, "Comedia", "Rachel Talalay");
-        listaSeries[3] = new Serie("Avatar: la leyenda de Aang", 3, "animado", "Michael Dante DiMartino");
-        listaSeries[4] = new Serie("Breaking Bad", 5, "Thriller", "Vince Gilligan");
+        listaSeries[2] = new Serie("Breaking Bad", 2, "Comedia",
+                "Vince Gilligan");
+        listaSeries[3] = new Serie("Avatar; la leyenda de Aang", 5, "Animado",
+                "Michael Dante DiMartino");
+        listaSeries[4] = new Serie("Breaking Bad", 8, "Thriller",
+                "Vince Gilligan");
 
+        //Inicializar cada posición del array de videojuegos.
         listaVideoJuegos [0] = new Videojuego();
-        listaVideoJuegos [1] = new Videojuego("Super Mario Galaxy 2", 20, "Aventura", "Nintendo EAD");
+        listaVideoJuegos [1] = new Videojuego("Super Mario Galaxy 2", 10.5, "Aventura",
+                "Nintendo EAD");
         listaVideoJuegos [2] = new Videojuego("Final fantasy X","Square Enix");
-        listaVideoJuegos [3] = new Videojuego("Super Mario 3DS", 30, "Aventura", "Nintendo");
-        listaVideoJuegos [4] = new Videojuego("Metal Gear Solid", 80, "acción", "Konami");
+        listaVideoJuegos [3] = new Videojuego("Super Mario 3DS", 8, "Aventura",
+                "Nintendo");
+        listaVideoJuegos [4] = new Videojuego("Metal Gear Solid", 9, "Acción",
+                "Konami");
 
-        listaSeries[1].entregar();
-        listaSeries[2].entregar();
+        //Entregar 3 series con el método entregar().
+        listaSeries[0].entregar();
+        listaSeries[3].entregar();
+        listaSeries[4].entregar();
+
+        //Entregar 2 Videojuegos con el método entregar().
         listaVideoJuegos[0].entregar();
-        listaVideoJuegos[4].entregar();
+        listaVideoJuegos[3].entregar();
+        //listaVideoJuegos[4].entregar();
 
-        int entregados = 0;
+        //listaSeries[4].devolver();
+
+        //Contar y devolver las series y los videojuegos entregados.
+        int seriesPrestadas = 0;
+        int videojuegosPrestados = 0;
 
         for (int i = 0; i < listaSeries.length; i++) {
 
             if (listaSeries[i].isEntregado()){
-                entregados+=1;
-                listaSeries[i].devolver();
+                seriesPrestadas += 1;
             }
 
             if (listaVideoJuegos[i].isEntregado()){
-                entregados+=1;
-                listaVideoJuegos[i].devolver();
+                videojuegosPrestados += 1;
             }
         }
 
-        System.out.println("\n" + "\tActualmente se tiene(n) " + entregados + " articulo(s) entregado(s)\n");
+        System.out.println("\n" + "Actualmente se tiene(n) " + seriesPrestadas + " series y " + videojuegosPrestados +
+                " videojuego(s) entregado(s)\n");
 
-        Serie serieMayor=listaSeries[0];
+        //Crear dos objetos en la primera posición de cada array.
+        Serie serieMayor = listaSeries[0];
+        Videojuego videojuegoMayor = listaVideoJuegos[0];
 
-        Videojuego videojuegoMayor=listaVideoJuegos[0];
-
-
-        for(int i=1;i<listaSeries.length;i++){
+        //Obtener y desplegar en pantalla el videojuego que tiene más horas estimadas y la serie con más temporadas.
+        for(int i=0;i<listaSeries.length;i++){
 
             if(listaSeries[i].compareTo(serieMayor)==Serie.MAYOR){
                 serieMayor=listaSeries[i];
@@ -56,14 +74,10 @@ public class Main {
             if(listaVideoJuegos[i].compareTo(videojuegoMayor)==Videojuego.MAYOR){
                 videojuegoMayor=listaVideoJuegos[i];
             }
-
         }
-
-        System.out.println(videojuegoMayor);
-
         System.out.println(serieMayor);
+        System.out.println(videojuegoMayor);
     }
-
 }
 
 
